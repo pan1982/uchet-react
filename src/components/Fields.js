@@ -45,7 +45,7 @@ export default connect(state => (state), mapDispatchToProps)(class extends Compo
     componentDidMount() {
 
         let fields = []
-        this.props.app.fields.allElements.map(v => {
+        this.props.app.fields.allElements && this.props.app.fields.allElements.map(v => {
             if (v.index === this.state.index) fields.push(v);
             if (v.name === 'prepaid') {
                 console.log(v.is_valid)

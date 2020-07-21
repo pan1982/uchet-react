@@ -31,7 +31,10 @@ export default function fetchPost(data = {}, url = "", jwt = "") {
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
         headers,
     }
-    if (data) init.body = JSON.stringify(data);
+    if (typeof data === 'object') {
+        var {action, confirmation_code, email, password, user_name} = data;
+        init.body = JSON.stringify({action, confirmation_code, email, password, user_name});
+    }
 
     return fetch(SERVER + '/api' + url, init)
         .then(res => {
